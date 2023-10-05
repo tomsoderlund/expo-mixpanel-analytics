@@ -3,6 +3,7 @@ import { Platform, Dimensions } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import Constants from "expo-constants";
+import * as Updates from 'expo-updates';
 import * as Device from "expo-device";
 
 import { Buffer } from "buffer";
@@ -24,17 +25,16 @@ export class ExpoMixpanelAnalytics {
 
   constructor(token, storageKey = "mixpanel:super:props") {
     this.storageKey = storageKey;
-
     this.token = token;
     this.userId = null;
     this.clientId = Constants.deviceId
     this.constants = {
-      app_build_number: Constants.manifest?.revisionId,
-      app_id: Constants.manifest?.slug,
-      app_name: Constants.manifest?.name,
-      app_version_string: Constants.manifest?.version,
+      app_build_number: Updates?.runtimeVersion ?? undefined,
+      app_id: Constants.expoConfig?.slug,
+      app_name: Constants.expoConfig?.name,
+      app_version_string: Constants.expoConfig?.version,
       device_name: Constants.deviceName,
-      expo_app_ownership: Constants.appOwnership || undefined,
+      expo_app_ownership: Constants.appOwnership ?? undefined,
       os_version: Platform.Version,
     };
 
