@@ -2,11 +2,10 @@
   "name": "@bothrs/expo-mixpanel-analytics",
   "version": "2.0.3",
   "description": "Mixpanel integration for use with React Native apps built on Expo 39.",
-  "main": "dist/src/index.js",
-  "types": "dist/src/index.d.ts",
+  "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist src/index.js && tsc",
+    "build": "rimraf dist src/index.ts && tsc",
     "prepublishOnly": "npm run build"
   },
   "repository": {
@@ -21,7 +20,7 @@
     "analytics"
   ],
   "files": [
-    "dist/src"
+    "src"
   ],
   "author": "Ben Awad",
   "license": "MIT",
